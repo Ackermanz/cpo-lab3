@@ -1,14 +1,17 @@
 # GROUP-NAME - DOBBY - lab 3 - variant 5
 
+
 - We define a class named SDFGraph and a class named Node.
 The former class is used to define a Synchronous Data Flow(SDF) class.
 Its initialization name means the object's name,
 list token_inputs and token_outputs means its literal meaning,
 list nodes means the set of all nodes.
-The latter class is used to define a Node class contain its input and output token and its function.
+The latter class is used to define a Node class 
+contain its input and output token and its function.
 Its initialization name means the node's name,
 list inputs and outputs means a node that connects it,
 list function means the function the node effects.
+
 
 - Secondly, we add all nodes to nodes list and  put the output token and input token into queue.
 They are used to calculate the solution of quadratic formula.
@@ -38,5 +41,6 @@ They are used to calculate the solution of quadratic formula.
 
 - The synchronous dataﬂow is achieved through the tokens.
 - And we can design an input language for building computational process description;
-- We can design interpreter, which allows library user to execute a computational process description;
+- We can design interpreter, 
+- which allows library user to execute a computational process description;
 - We can achieve an interpreter for computational process models.
