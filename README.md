@@ -1,32 +1,35 @@
-# GROUP-NAME - lab NUMBER - variant NUMBER
+# GROUP-NAME - DOBBY - lab 3 - variant 5
 
-This is an example project which demonstrates project structure and necessary
-CI checks. It is not the best structure for real-world projects, but good
-enough for educational purposes.
+- We define a class named SDFGraph and a class named Node.The former class is used to define a Synchronous Data Flow(SDF) class.
+Its initialization name means the object's name, list token_inputs and token_outputs means its literal meaning, list nodes means the set of all nodes.
+The latter class is used to define a Node class contain its input and output token and its function.
+Its initialization name means the node's name,list inputs and outputs means a node that connects it,list function means the function the node effects.
+
+- Secondly, we add all nodes to nodes list and  put the output token and input token into queue.They are used to calculate the solution of quadratic formula.
+
+- Thirdly, we traverse all nodes in list nodes, we calculate the function effected it and we also record their input and output,then we put them into a queue so that the relationship between nodes are recorded.
 
 ## Project structure
 
-- `foo.py` -- implementation of `Foo` class with `hello` and `add` features.
-   Stateless.
-- `foo_test.py` -- unit and PBT tests for `Foo`.
+- `SDFGraph.py` -- Implementation the class of `SDFGraph` and `Node`.
 
-## Features
-
-- PBT: `test_add_commutative`
+- `SDFGraph_test.py` -- Unit PBT tests for `SDFGraph.py`.
 
 ## Contribution
 
-- Aleksandr Penskoi (EMAIL) -- all work.
+- Du,Mei(212320038@hdu.edu.cn) -- Implement `SDFGraph.py`.
+- zhuhaonan(921057454@qq.com) -- Implement `SDFGraph_test.py`.
 
 ## Changelog
 
-- 29.03.2022 - 2
-  - Add test coverage.
-- 29.03.2022 - 1
-  - Update README. Add formal sections.
-- 29.03.2022 - 0
-  - Initial
+- 16.06.2022 - 2
+  - Implement `SDFGraph.py` and `SDFGraph_test.py`.
+  - Github check and fix.
+  - update README.
 
 ## Design notes
+- The synchronous dataﬂow is achieved through the tokens.
+- And we can design an input language for building computational process description; 
+- We can design interpreter, which allows library user to execute a computational process description;
+- We can achieve an interpreter for computational process models. 
 
-- ...
