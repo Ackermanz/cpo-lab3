@@ -2,8 +2,8 @@
 
 - We define a class named SDFGraph and a class named Node.
 The former class is used to define a Synchronous Data Flow(SDF) class.
-Its initialization name means the object's name, 
-list token_inputs and token_outputs means its literal meaning, 
+Its initialization name means the object's name,
+list token_inputs and token_outputs means its literal meaning,
 list nodes means the set of all nodes.
 The latter class is used to define a Node class contain its input and output token and its function.
 Its initialization name means the node's name,
@@ -29,12 +29,14 @@ They are used to calculate the solution of quadratic formula.
 ## Changelog
 
 - 16.06.2022 - 2
+
   - Implement `SDFGraph.py` and `SDFGraph_test.py`.
   - Github check and fix.
   - update README.
 
 ## Design notes
+
 - The synchronous dataﬂow is achieved through the tokens.
-- And we can design an input language for building computational process description; 
+- And we can design an input language for building computational process description;
 - We can design interpreter, which allows library user to execute a computational process description;
-- We can achieve an interpreter for computational process models. 
+- We can achieve an interpreter for computational process models.
