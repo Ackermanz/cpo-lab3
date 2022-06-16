@@ -3,6 +3,7 @@ from SDFGraph import *
 from datetime import datetime
 import logging
 
+
 class SDFGraph_test(unittest.TestCase):
     def test_SDFGraph(self):
         SDF = SDFGraph('test')
@@ -16,14 +17,16 @@ class SDFGraph_test(unittest.TestCase):
         print(end - begin)
         logging.info("The queues are set")
 
-        begin=datetime.now().microsecond
+        begin = datetime.now().microsecond
         SDF.add_node('a', lambda x: [x, x], ina, ['2a', '4ac'])
         SDF.add_node('b', lambda x: [x, x], inb, ['b^2-4ac', 'molecular'])
         SDF.add_node('d', lambda x: x, inc, ['b^2-4ac'])
         SDF.add_node('2a', lambda x: [2 * x, 2 * x], ['a'], ['root1', 'root2'])
-        SDF.add_node('b^2-4ac', lambda x, a, c: x ** 2 - 4 * a * c, ['a', 'c'], ['sqrt'])
+        SDF.add_node('b^2-4ac', lambda x, a, c: x **
+                     2 - 4 * a * c, ['a', 'c'], ['sqrt'])
         SDF.add_node('sqrt', lambda x: x ** 0.5, ['b^2-4ac'], ['molecular'])
-        SDF.add_node('molecular', lambda x, y: [-x - y, -x + y], ['b', 'sqrt'], ['root1', 'root2'])
+        SDF.add_node('molecular', lambda x,
+                     y: [-x - y, -x + y], ['b', 'sqrt'], ['root1', 'root2'])
         SDF.add_node('root1', lambda x, y: x / y, ['molecular', '2a'], output1)
         SDF.add_node('root2', lambda x, y: x / y, ['molecular', '2a'], output2)
         end = datetime.now().microsecond
@@ -42,7 +45,6 @@ class SDFGraph_test(unittest.TestCase):
         end = datetime.now().microsecond
         print(end - begin)
         logging.info("The process is ending")
-
 
     def test_SDFGraph_SR(self):
         Q = 1
@@ -69,9 +71,10 @@ class SDFGraph_test(unittest.TestCase):
         res = [output.get()]
         self.assertEqual(res, expect)
 
+
 class node_test(unittest.TestCase):
     def test_node_sin(self):
-        f = lambda x: math.sin(x)
+        def f(x): return math.sin(x)
         node = Node('sin', f)
         x = queue.Queue(3)
         y = queue.Queue(3)
@@ -84,7 +87,7 @@ class node_test(unittest.TestCase):
             self.assertEqual(y.get(), f(k))
 
     def test_node_add(self):
-        f = lambda x: x + x
+        def f(x): return x + x
         node = Node('add', f)
         x = queue.Queue(3)
         y = queue.Queue(3)
@@ -95,6 +98,7 @@ class node_test(unittest.TestCase):
             node.outputs = [y]
             node.calculate()
             self.assertEqual(y.get(), f(k))
+
 
 if __name__ == '__main__':
     unittest.main()

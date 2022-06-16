@@ -19,6 +19,7 @@ def arg_type(*ty2):
         return deal
     return common
 
+
 def ToCheckFun(t):
     return lambda x: isinstance(x, t)
 
@@ -31,7 +32,6 @@ class SDFGraph():
         self.token_queues = []
         self.nodes = []
 
-
     @arg_type(object, str, object, object, object)
     def add_node(self, name, function, inputs, outputs):
         node = Node(name, function)
@@ -42,33 +42,35 @@ class SDFGraph():
         self.nodes.append(node)
         return node
 
-
     @arg_type(object, object)
     def get_node(self, name):
-        current_name = name[0] if (type(name) == tuple) else name
+        current_name = name[0] if (isinstance(name, tuple)) else name
         for value in self.nodes:
             if value.name == current_name:
                 return value
         return None
 
-
     @arg_type(object, str, object, bool)
     def join_queue(self, current_name, node_list, input_flag):
         result = []
-        if type(node_list) != list and type(node_list) != tuple:
+        if not isinstance(
+                node_list,
+                list) and not isinstance(
+                node_list,
+                tuple):
             self.token_queues.append(node_list)
             result.append(node_list)
             if input_flag:
                 self.token_inputs.append((current_name, node_list))
             else:
                 self.token_outputs.append((current_name, node_list))
-        elif type(node_list) == tuple:
+        elif isinstance(node_list, tuple):
             for current_queue in node_list:
                 self.token_queues.append(current_queue)
                 result.append(current_queue)
         else:
             for name in node_list:
-                if type(name) != tuple:
+                if not isinstance(name, tuple):
                     node = self.get_node(name)
                     if not node:
 
@@ -94,13 +96,11 @@ class SDFGraph():
                             result.append(node.inputs[k])
         return result
 
-
     @arg_type(object, int)
     def execute(self, clk):
         for i in range(clk):
             for node in self.nodes:
                 print(node.calculate())
-
 
     def back_queue(self, q, input_flag=True):
         res = []
@@ -112,7 +112,6 @@ class SDFGraph():
             if q in queues:
                 res.append(i)
         return res
-
 
     def visualize(self):
         res = []
@@ -140,7 +139,6 @@ class SDFGraph():
         res.append("}")
         return "\n".join(res)
 
-
     @arg_type(list)
     def quadratic(self, x):
         a = x[0]
@@ -166,13 +164,11 @@ class Node(object):
         if current_queue.empty():
             return False
 
-
     def if_activate(self):
         for current_queue in self.inputs:
             if current_queue.empty():
                 return False
         return True
-
 
     def get_input_from_queue(self):
         if not self.inputs:
@@ -184,17 +180,15 @@ class Node(object):
                 get_input.append(input_queue.get())
         return get_input
 
-
     def put_output_to_queue(self, out):
         if not self.outputs:
             quit()
-        if not(type(out) == list):
+        if not(isinstance(out, list)):
             out = [out]
         if len(out) != len(self.outputs):
             return None
         for i, output_queue in enumerate(self.outputs):
             output_queue.put(out[i])
-
 
     def calculate(self):
         get_input = self.get_input_from_queue()
@@ -219,9 +213,11 @@ if __name__ == "__main__":
     SDF.add_node('b', lambda x: [x, x], inb, ['b^2-4ac', 'molecular'])
     SDF.add_node('c', lambda x: x, inc, ['b^2-4ac'])
     SDF.add_node('2a', lambda x: [2 * x, 2 * x], ['a'], ['root1', 'root2'])
-    SDF.add_node('b^2-4ac', lambda x, a, c: x ** 2 - 4 * a * c, ['a', 'c'], ['sqrt'])
+    SDF.add_node('b^2-4ac', lambda x, a, c: x **
+                 2 - 4 * a * c, ['a', 'c'], ['sqrt'])
     SDF.add_node('sqrt', lambda x: x ** 0.5, ['b^2-4ac'], ['molecular'])
-    SDF.add_node('molecular', lambda x, y: [-x - y, -x + y], ['b', 'sqrt'], ['root1', 'root2'])
+    SDF.add_node('molecular', lambda x,
+                 y: [-x - y, -x + y], ['b', 'sqrt'], ['root1', 'root2'])
     SDF.add_node('root1', lambda x, y: x / y, ['molecular', '2a'], output1)
     SDF.add_node('root2', lambda x, y: x / y, ['molecular', '2a'], output2)
 
