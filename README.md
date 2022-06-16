@@ -5,9 +5,11 @@ The former class is used to define a Synchronous Data Flow(SDF) class.
 The latter class is used to define a Node class
 contain its input and output token and its function.
 Its initialization name means the node's name,
+
 - Secondly, we add all nodes to nodes list and
 put the output token and input token into queue.
 They are used to calculate the solution of quadratic formula.
+
 - Thirdly, we traverse all nodes in list nodes,
  we calculate the function effected it and we also record their input and output,
  then we put them into a queue so that the relationship between nodes are recorded.
