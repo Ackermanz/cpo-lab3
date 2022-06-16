@@ -77,7 +77,7 @@ class SDFGraph_test(unittest.TestCase):
 class node_test(unittest.TestCase):
     def test_node_sin(self):
         def f(x): return math.sin(x)
-        node = SDFGraph.Node('sin', f)
+        node = Node('sin', f)
         x = queue.Queue(3)
         y = queue.Queue(3)
         xs = [1, 2, 3]
@@ -90,7 +90,7 @@ class node_test(unittest.TestCase):
 
     def test_node_add(self):
         def f(x): return x + x
-        node = SDFGraph.Node('add', f)
+        node = Node('add', f)
         x = queue.Queue(3)
         y = queue.Queue(3)
         xs = [1, 2, 3]
