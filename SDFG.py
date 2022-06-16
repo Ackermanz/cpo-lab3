@@ -1,6 +1,6 @@
 import math
 import queue
-import graphviz
+from pygments.lexers import graphviz
 
 
 def arg_type(*ty2):
