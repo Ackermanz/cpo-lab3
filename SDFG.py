@@ -1,7 +1,6 @@
-from collections import OrderedDict, namedtuple
-import graphviz
 import math
 import queue
+import graphviz
 
 
 def arg_type(*ty2):

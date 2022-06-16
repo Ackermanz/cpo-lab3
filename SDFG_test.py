@@ -1,9 +1,8 @@
 import unittest
-from SDFG import *
 from datetime import datetime
 import logging
-
-class SDFGraph_test(unittest.TestCase):
+from SDFG import *
+class SDFG_test(unittest.TestCase):
     def test_SDFGraph(self):
         SDF = SDFG('test')
         begin = datetime.now().microsecond
