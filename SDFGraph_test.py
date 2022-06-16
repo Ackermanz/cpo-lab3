@@ -1,10 +1,11 @@
 import unittest
+from SDFGraph import *
 from datetime import datetime
 import logging
-from SDFG import *
-class SDFG_test(unittest.TestCase):
+
+class SDFGraph_test(unittest.TestCase):
     def test_SDFGraph(self):
-        SDF = SDFG('test')
+        SDF = SDFGraph('test')
         begin = datetime.now().microsecond
         ina = queue.Queue(2)
         inb = queue.Queue(2)
@@ -43,7 +44,7 @@ class SDFG_test(unittest.TestCase):
         logging.info("The process is ending")
 
 
-    def test_SDF_SR(self):
+    def test_SDFGraph_SR(self):
         Q = 1
         S = 0
         R = 1
@@ -57,7 +58,7 @@ class SDFG_test(unittest.TestCase):
             print("The process is starting")
 
     def test_SDF_with_One_Node(self):
-        SDF = SDFG('test1')
+        SDF = SDFGraph('test1')
         ina = queue.Queue(2)
         output = queue.Queue(3)
         SDF.add_node('d', lambda x: x**2, ina, output)

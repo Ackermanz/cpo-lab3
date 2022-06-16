@@ -1,6 +1,7 @@
+from collections import OrderedDict, namedtuple
+import graphviz
 import math
 import queue
-from pygments.lexers import graphviz
 
 
 def arg_type(*ty2):
@@ -22,7 +23,7 @@ def ToCheckFun(t):
     return lambda x: isinstance(x, t)
 
 
-class SDFG():
+class SDFGraph():
     def __init__(self, name):
         self.name = name
         self.token_inputs = []
@@ -34,7 +35,9 @@ class SDFG():
     @arg_type(object, str, object, object, object)
     def add_node(self, name, function, inputs, outputs):
         node = Node(name, function)
+        # print(name, inputs,'\n')
         node.inputs = self.join_queue(name, inputs, True)
+        # print(node.inputs,'\n')
         node.outputs = self.join_queue(name, outputs, False)
         self.nodes.append(node)
         return node
@@ -166,7 +169,6 @@ class Node(object):
 
     def if_activate(self):
         for current_queue in self.inputs:
-
             if current_queue.empty():
                 return False
         return True
@@ -203,7 +205,7 @@ class Node(object):
 
 
 if __name__ == "__main__":
-    SDF = SDFG('test')
+    SDF = SDFGraph('test')
     ina = queue.Queue(2)
     inb = queue.Queue(2)
     inc = queue.Queue(2)
