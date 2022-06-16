@@ -5,7 +5,8 @@ The former class is used to define a Synchronous Data Flow(SDF) class.
 The latter class is used to define a Node class
 contain its input and output token and its function.
 Its initialization name means the node's name,
-- Secondly, we add all nodes to nodes list and  put the output token and input token into queue.
+- Secondly, we add all nodes to nodes list and
+put the output token and input token into queue.
 They are used to calculate the solution of quadratic formula.
 - Thirdly, we traverse all nodes in list nodes,
  we calculate the function effected it and we also record their input and output,
@@ -33,6 +34,6 @@ They are used to calculate the solution of quadratic formula.
 
 - The synchronous dataﬂow is achieved through the tokens.
 - And we can design an input language for building computational process description;
-- We can design interpreter, 
+- We can design interpreter,
 - which allows library user to execute a computational process description;
 - We can achieve an interpreter for computational process models.
