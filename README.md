@@ -1,12 +1,12 @@
 # GROUP-NAME - DOBBY - lab 3 - variant 5
 
-- We define a class named SDFGraph and a class named Node.
+-  We define a class named SDFGraph and a class named Node.
 The former class is used to define a Synchronous Data Flow(SDF) class.
 The latter class is used to define a Node class
 contain its input and output token and its function.
 Its initialization name means the node's name,
 
-- Secondly, we add all nodes to nodes list and
+-  Secondly, we add all nodes to nodes list and
 put the output token and input token into queue.
 They are used to calculate the solution of quadratic formula.
 
