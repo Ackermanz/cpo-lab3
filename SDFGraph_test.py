@@ -1,7 +1,8 @@
 import math
 import queue
 import unittest
-from SDFGraph import *
+from SDFGraph import SDFGraph
+from SDFGraph import Node
 from datetime import datetime
 import logging
 
